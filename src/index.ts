@@ -1,4 +1,4 @@
-import { Observable, Subscription, NextObserver, ErrorObserver, CompletionObserver } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 /**
  * A value wrapper to handle null/undefined safely
@@ -66,7 +66,7 @@ export class Maybe<T>
      * Transform to another maybe if has value
      * @param transform transform function
      */
-    public tansform<U>(transform: (value: T) => U): Maybe<U> {
+    public transform<U>(transform: (value: T) => U): Maybe<U> {
         return this.isNothing() ? Maybe.nothing<U>() : Maybe.just(transform(this.getValue()));
     }
 
@@ -74,7 +74,7 @@ export class Maybe<T>
      * Async transform to another maybe if has value
      * @param transform transform function
      */
-    public asyncTansform<U>(transform: (value: T) => Observable<U>): AsyncMaybe<U> {
+    public asyncTransform<U>(transform: (value: T) => Observable<U>): AsyncMaybe<U> {
         return this.isNothing() ? Maybe.asyncNothing<U>() : Maybe.asyncJust(transform(this.getValue()));
     }
 
@@ -94,7 +94,9 @@ export class Maybe<T>
  * An async value wrapper to handle null/undefined safely
  */
 export class AsyncMaybe<T> extends Maybe<Observable<T>> {
-    public subscribe(observer?: NextObserver<T> | ErrorObserver<T> | CompletionObserver<T> | undefined): Maybe<Subscription> {
-        return this.tansform((value) => value.subscribe(observer));
+    public subscribe(...args): Maybe<Subscription> {
+        return this.transform(function (value) {
+            return value.subscribe(...args);
+        });
     }
 }

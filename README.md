@@ -29,7 +29,7 @@ function getItemSubContent(id) {
     if (!item) return null;
     if (!item.content) return null;
 
-    return item.content.subcontent;
+    return item.content.subContent;
 }
 
 let v1 = getItemSubContent(null);
@@ -55,7 +55,7 @@ code with nulless:
 ```typescript
 import { Maybe } from 'nulless';
 
-let items = [{id: 1, content: {subContent: 2}}, {id: 2, content: null}, {id: 4, content: {subContent: 6}}];
+let items = [{id: 1, content: {subContent: 'dsa'}}, {id: 2, content: null}, {id: 4, content: {subContent: 'fd'}}];
 function getItemSubContent(id: Maybe<number>): Maybe<string> {
     // function transform will return another maybe
     return id.transform(value => items.find(item => item.id === value))
@@ -65,7 +65,7 @@ function getItemSubContent(id: Maybe<number>): Maybe<string> {
 
 // function do will call pass-in function if maybe has value
 getItemSubContent(Maybe.nothing<number>()).do(value => alert(value)); // do nothing since get nothing
-getItemSubContent(Maybe.just<number>(1)).do(value => alert(value)); // alert 2 since get actual value
+getItemSubContent(Maybe.just<number>(1)).do(value => alert(value)); // alert dsa since get actual value
 getItemSubContent(Maybe.just<number>(2)).do(value => alert(value)); // do nothing since get nothing
 getItemSubContent(Maybe.just<number>(3)).do(value => alert(value)); // do nothing since get nothing
 ```
@@ -76,24 +76,24 @@ async nulless with rxjs:
 
 import { Maybe } from 'nulless';
 
-let items = [{id: 1, content: {subContent: 2}}, {id: 2, content: null}, {id: 4, content: {subContent: 6}}];
+let items = [{id: 1, content: {subContent: 'dsa'}}, {id: 2, content: null}, {id: 4, content: {subContent: 'fd'}}];
 
-function getItemSubContent(id: Maybe<number>): Maybe<string> {
+function getItemSubContent(id: Maybe<number>): AsyncMaybe<string> {
     // function transform will return another maybe
     return id.asyncTransform(value => new Observalbe<any>(subscriber => {
-                let items = [{id: 1, content: {subContent: 2}}, {id: 2, content: null}, {id: 4, content: {subContent: 6}}];
-                subscriber.next(items.find(item => item.id === value));
-             })
-             .subscribe()
-             .transform(value => value.content)
-             .transform(value => value.subcontent);
+                let items = [{id: 1, content: {subContent: 'dsa'}}, {id: 2, content: null}, {id: 4, content: {subContent: 'fd'}}];
+                let result = Maybe.just<string>(items.find(item => item.id === value))
+                    .transform(value => value.content)
+                    .transform(value => value.subContent);
+                subscriber.next(result);
+             });
 }
 
 // function do will call pass-in function if maybe has value
-getItemSubContent(Maybe.nothing<number>()).do(value => alert(value)); // do nothing since get nothing
-getItemSubContent(Maybe.just<number>(1)).do(value => alert(value)); // alert 2 since get actual value
-getItemSubContent(Maybe.just<number>(2)).do(value => alert(value)); // do nothing since get nothing
-getItemSubContent(Maybe.just<number>(3)).do(value => alert(value)); // do nothing since get nothing
+getItemSubContent(Maybe.nothing<number>()).subscribe(value => alert(value)); // do nothing since get nothing
+getItemSubContent(Maybe.just<number>(1)).subscribe(value => alert(value)); // alert dsa since get actual value
+getItemSubContent(Maybe.just<number>(2)).subscribe(value => alert(value)); // do nothing since get nothing
+getItemSubContent(Maybe.just<number>(3)).subscribe(value => alert(value)); // do nothing since get nothing
 ```
 
 ## Install

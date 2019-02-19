@@ -39,10 +39,10 @@ describe('Maybe', () => {
 
     it('should transform if not null', () => {
         let maybe = Maybe.nothing<string>();
-        expect(maybe.tansform(() => 'inside!').isNothing()).is.true;
+        expect(maybe.transform(() => 'inside!').isNothing()).is.true;
 
         maybe = Maybe.just<string>('test');
-        expect(maybe.tansform((value) => value + 'good').getValue()).is.equals('testgood');
+        expect(maybe.transform((value) => value + 'good').getValue()).is.equals('testgood');
     });
 
 });
