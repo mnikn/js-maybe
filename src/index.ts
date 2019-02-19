@@ -1,4 +1,4 @@
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, NextObserver, ErrorObserver, CompletionObserver } from 'rxjs';
 
 /**
  * A value wrapper to handle null/undefined safely
@@ -94,7 +94,7 @@ export class Maybe<T>
  * An async value wrapper to handle null/undefined safely
  */
 export class AsyncMaybe<T> extends Maybe<Observable<T>> {
-    public subscribe(): Maybe<Subscription> {
-        return this.tansform((value) => value.subscribe());
+    public subscribe(observer?: NextObserver<T> | ErrorObserver<T> | CompletionObserver<T> | undefined): Maybe<Subscription> {
+        return this.tansform((value) => value.subscribe(observer));
     }
 }
