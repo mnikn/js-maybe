@@ -1,5 +1,5 @@
 {
-  "name": "ts-maybe",
+  "name": "js-maybe",
   "version": "0.1.0",
   "description": "Help you handle horrible null and undfiend.",
   "main": "maybe.ts",
