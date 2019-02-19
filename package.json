@@ -1,0 +1,43 @@
+{
+  "name": "ts-maybe",
+  "version": "0.1.0",
+  "description": "Help you handle horrible null and undfiend.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist/ && rollup -c -o dist/maybe.min.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "utilities"
+  ],
+  "author": "mnikn",
+  "license": "MIT",
+  "dependencies": {
+    "rxjs": "^6.4.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "jest": "^24.1.0",
+    "rollup": "^1.2.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3"
+  },
+  "repository": "https://github.com/mnikn/js-maybe",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "testRegex": "/test/.*\\.(ts|js)$"
+  }
+}
