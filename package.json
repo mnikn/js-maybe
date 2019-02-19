@@ -30,6 +30,7 @@
     "typescript": "^3.3.3"
   },
   "repository": "https://github.com/mnikn/js-maybe",
+  "private": false,
   "jest": {
     "moduleFileExtensions": [
       "ts",
