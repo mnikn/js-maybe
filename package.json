@@ -2,7 +2,7 @@
   "name": "ts-maybe",
   "version": "0.1.0",
   "description": "Help you handle horrible null and undfiend.",
-  "main": "index.js",
+  "main": "maybe.ts",
   "scripts": {
     "build": "rm -rf ./dist/ && rollup -c -o dist/maybe.min.js",
     "test": "jest"
