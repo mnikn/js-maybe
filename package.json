@@ -1,10 +1,10 @@
 {
-  "name": "js-maybe",
+  "name": "nulless",
   "version": "0.1.0",
   "description": "Help you handle horrible null and undfiend.",
-  "main": "maybe.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "rm -rf ./dist/ && rollup -c -o dist/maybe.min.js",
+    "build": "rm -rf ./dist/ && rollup -c -o dist/nulless.min.js",
     "test": "jest"
   },
   "keywords": [
@@ -29,7 +29,7 @@
     "ts-jest": "^24.0.0",
     "typescript": "^3.3.3"
   },
-  "repository": "https://github.com/mnikn/js-maybe",
+  "repository": "https://github.com/mnikn/nulless",
   "private": false,
   "jest": {
     "moduleFileExtensions": [

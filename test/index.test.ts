@@ -1,6 +1,6 @@
 import * as chai from 'chai';
 
-import { Maybe } from '../src/maybe';
+import { Maybe } from '../src';
 
 const expect = chai.expect;
 describe('Maybe', () => {

@@ -20,6 +20,6 @@
     ]
   },
   "include": [
-    "src/**/*", "test/maybe.test.ts"
+    "src/**/*", "test/index.test.ts"
   ]
 }

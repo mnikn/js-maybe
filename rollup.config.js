@@ -3,9 +3,9 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs'
 
 export default {
-    input: 'src/maybe.ts',
+    input: 'src/index.ts',
     output: {
-        name: 'maybe',
+        name: 'nulless',
         format: 'cjs',
         sourcemap: true
     },
