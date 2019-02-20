@@ -46,12 +46,12 @@ declare namespace nulless {
          * Transform to another maybe if has value
          * @param transform transform function
          */
-        public transform<U>(transform: (value: T) => U);
+        public transform<U>(transform: (value: T) => U): Maybe<U>;
         /**
          * Async transform to another maybe if has value
          * @param transform transform function
          */
-        public asyncTransform<U>(transform: (value: T) => Observable<U>);
+        public asyncTransform<U>(transform: (value: T) => Observable<U>): AsyncMaybe<U>;
         /**
          * Do something if has value
          * @param doSomething callback function
