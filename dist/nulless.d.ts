@@ -8,24 +8,24 @@ declare namespace nulless {
         /**
          * Return nothing maybe
          */
-        public static nothing<T>();
+        public static nothing<T>(): Maybe<T>;
 
         /**
          * Return async nothing maybe
          */
-        public static asyncNothing<T>();
+        public static asyncNothing<T>(): AsyncMaybe<T>;
 
         /**
          * Return valuable maybe
          * @param value value need to be wrapped
          */
-        public static just<T>(value: T | null);
+        public static just<T>(value: T | null): Maybe<T>;
 
         /**
          * Return async valuable maybe 
          * @param value value need to be wrapped
          */
-        public static asyncJust<T>(value: Observable<T> | null);
+        public static asyncJust<T>(value: Observable<T> | null): AsyncMaybe<T>;
 
         /**
          * Check is it nothing

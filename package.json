@@ -1,6 +1,6 @@
 {
   "name": "nulless",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Help you handle horrible null and undfiend.",
   "main": "dist/nulless.js",
   "types": "dist/nulless.d.ts",
