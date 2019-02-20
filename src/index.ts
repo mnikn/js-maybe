@@ -15,7 +15,7 @@ export class Maybe<T>
      * Return nothing maybe
      */
     public static nothing<T>(): Maybe<T> {
-        return new Maybe<T>();
+        return new Maybe<T>(null);
     }
 
     /**
@@ -45,7 +45,7 @@ export class Maybe<T>
      * Check is it nothing
      */
     public isNothing(): boolean {
-        return !this._value;
+        return this._value == null;
     }
 
     /**
@@ -94,7 +94,7 @@ export class Maybe<T>
  * An async value wrapper to handle null/undefined safely
  */
 export class AsyncMaybe<T> extends Maybe<Observable<T>> {
-    public subscribe(...args): Maybe<Subscription> {
+    public subscribe(...args: any[]): Maybe<Subscription> {
         return this.transform(function (value) {
             return value.subscribe(...args);
         });

@@ -2,9 +2,10 @@
   "name": "nulless",
   "version": "0.2.0",
   "description": "Help you handle horrible null and undfiend.",
-  "main": "src/index.ts",
+  "main": "dist/nulless.js",
+  "types": "dist/nulless.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist/ && rollup -c -o dist/nulless.min.js",
+    "build": "rollup -c -o dist/nulless.js",
     "test": "jest"
   },
   "keywords": [
